@@ -9,7 +9,7 @@ const useTickersPaginated = () => {
   const dispatch = useAppDispatch();
   const loadTickers = async () => {
     if (start > total) return;
-    dispatch(fetchTickersThunk({ start }));
+    await dispatch(fetchTickersThunk({ start }));
   };
 
   useEffect(() => {
