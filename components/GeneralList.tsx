@@ -1,4 +1,4 @@
-import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator } from "react-native";
 import React from "react";
 import { GlobalItem } from "../interfaces/globalItemInterface";
 import BigList from "react-native-big-list";
@@ -35,14 +35,14 @@ const GeneralList = (props: Props) => {
 
   return (
     <BigList
-      renderFooter={renderFooter}
-      headerHeight={50}
-      footerHeight={50}
-      itemHeight={50}
       renderHeader={headerComponent}
+      headerHeight={50}
       data={items}
+      itemHeight={50}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ItemComponent {...{ [resourceName]: item }} />}
+      renderFooter={renderFooter}
+      footerHeight={50}
       onEndReached={onEndReached}
       onEndReachedThreshold={0.6}
     />
