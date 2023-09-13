@@ -22,6 +22,7 @@ const HomeScreen = () => {
         resourceName="ticker"
         onEndReached={loadTickers}
         isAllLoaded={isAllLoaded}
+        headerTitle="Cryptocurrency"
       />
     </View>
   );

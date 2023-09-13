@@ -12,6 +12,7 @@ interface Props {
   ItemLoadingComponent: React.FC;
   onEndReached?: () => void;
   isAllLoaded?: boolean;
+  headerTitle: string;
 }
 const GeneralList = (props: Props) => {
   const {
@@ -21,13 +22,14 @@ const GeneralList = (props: Props) => {
     ItemLoadingComponent,
     onEndReached,
     isAllLoaded = true,
+    headerTitle
   } = props;
 
   if (items.length === 0) return <ItemLoadingComponent />;
 
   const headerComponent = () => (
     <View style={globalStyles.globalMarginHorizontal}>
-      <Title>List of {resourceName}s</Title>
+      <Title>{headerTitle}</Title>
     </View>
   );
   const renderFooter = () => {
@@ -40,7 +42,7 @@ const GeneralList = (props: Props) => {
       renderHeader={headerComponent}
       headerHeight={50}
       data={items}
-      itemHeight={50}
+      itemHeight={65}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ItemComponent {...{ [resourceName]: item }} />}
       renderFooter={renderFooter}

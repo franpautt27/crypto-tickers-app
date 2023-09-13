@@ -1,14 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, StyleProp, TextStyle } from 'react-native'
 import React from 'react'
 import { globalStyles } from '../../constants/globalStyles'
 interface Props {
     children: string | string[]
+    style?: StyleProp<TextStyle>
 }
 
 const Title = (props: Props) => {
-    const {children} = props
+    const {children, style} = props
   return (
-      <Text style={globalStyles.title}>{children}</Text>
+      <Text style={[globalStyles.title, style]}>{children}</Text>
   )
 }
 

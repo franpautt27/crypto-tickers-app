@@ -19,7 +19,7 @@ export const globalStyles = StyleSheet.create({
   globalMarginVertical: { marginVertical: 40 },
   directionRow: {
     flexDirection: "row",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
   },
   text: {
     fontSize: 16,
