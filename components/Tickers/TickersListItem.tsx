@@ -1,5 +1,5 @@
 import { View, Text, Pressable } from 'react-native'
-import React from 'react'
+import React, {memo} from 'react'
 import { Ticker } from '../../interfaces/tickerInterfaces';
 import { globalStyles } from '../../constants/globalStyles';
 

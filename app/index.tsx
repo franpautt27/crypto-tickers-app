@@ -1,4 +1,4 @@
-import { View, Button } from "react-native";
+import { View, Button, Text } from "react-native";
 import React, { useEffect } from "react";
 import useTickersPaginated from "../hooks/useTickersPaginated";
 import { useAppSelector } from "../redux/hooks";
@@ -10,10 +10,6 @@ const HomeScreen = () => {
   const { tickers } = useAppSelector((state) => state.ticker);
   const { loadTickers } = useTickersPaginated();
 
-  useEffect(() => {
-    console.log(tickers.length);
-  });
-
   return (
     <GeneralList
       ItemComponent={TickersListItem}
@@ -22,6 +18,7 @@ const HomeScreen = () => {
       resourceName="ticker"
       onEndReached={loadTickers}
     />
+  
   );
 };
 

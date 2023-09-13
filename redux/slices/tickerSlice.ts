@@ -8,8 +8,8 @@ export interface TickerState {
   tickers: Ticker[];
   selectedTicker: Ticker | null;
   status: "idle" | "loading" | "succeeded" | "failed";
-  start: number
-  total: number
+  start: number;
+  total: number;
 }
 
 const initialState: TickerState = {
@@ -18,7 +18,7 @@ const initialState: TickerState = {
   status: "idle",
   info: null,
   start: 0,
-  total: 0
+  total: 0,
 };
 
 export const tickerSlice = createSlice({
@@ -28,23 +28,23 @@ export const tickerSlice = createSlice({
     setSelectedTicker: (state, action: PayloadAction<Ticker>) => {
       state.selectedTicker = action.payload;
     },
-    
   },
-  extraReducers: (builder) =>{
+  extraReducers: (builder) => {
     builder.addCase(fetchTickersThunk.pending, (state) => {
-      state.status = 'loading';      
+      state.status = "loading";
     });
     builder.addCase(fetchTickersThunk.fulfilled, (state, action) => {
-
-      state.status = 'succeeded';
-      state.tickers = state.tickers.concat(action.payload.data);    
       state.start += 100;
-      state.total = action.payload.info.coins_num;  
+      state.tickers = state.tickers.concat(action.payload.data);
+      if (state.total === 0) {
+        state.total = action.payload.info.coins_num;
+      }
+      state.status = "succeeded";
     });
     builder.addCase(fetchTickersThunk.rejected, (state) => {
-      state.status = 'failed';
+      state.status = "failed";
     });
-  }
+  },
 });
 
 // Action creators are generated for each case reducer function
