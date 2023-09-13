@@ -37,7 +37,7 @@ export const tickerSlice = createSlice({
     builder.addCase(fetchTickersThunk.fulfilled, (state, action) => {
 
       state.status = 'succeeded';
-      state.tickers.concat(action.payload.data);    
+      state.tickers = state.tickers.concat(action.payload.data);    
       state.start += 100;
       state.total = action.payload.info.coins_num;  
     });

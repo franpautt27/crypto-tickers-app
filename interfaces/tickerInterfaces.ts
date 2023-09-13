@@ -1,10 +1,11 @@
+import { GlobalItem } from "./globalItemInterface";
+
 export interface FetchedTickers {
     data: Ticker[];
     info: Info;
 }
 
-export interface Ticker {
-    id:                 string;
+export interface Ticker extends GlobalItem {
     symbol:             string;
     name:               string;
     nameid:             string;
