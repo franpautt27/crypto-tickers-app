@@ -4,7 +4,7 @@ import { globalStyles } from '../../constants/globalStyles'
 
 const TickersListLoading = () => {
     return (
-        <View style={globalStyles.fullScreenCentered}>
+        <View style={[globalStyles.fullScreen, globalStyles.centered]}>
           <ActivityIndicator size={"large"} />
         </View>
       )
