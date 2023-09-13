@@ -1,7 +1,9 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
 import React from "react";
 import { GlobalItem } from "../interfaces/globalItemInterface";
 import BigList from "react-native-big-list";
+import { globalStyles } from "../constants/globalStyles";
+import Title from "./UI/Title";
 
 interface Props {
   items: GlobalItem[];
@@ -24,8 +26,8 @@ const GeneralList = (props: Props) => {
   if (items.length === 0) return <ItemLoadingComponent />;
 
   const headerComponent = () => (
-    <View>
-      <Text>List of {resourceName}s</Text>
+    <View style={globalStyles.globalMarginHorizontal}>
+      <Title>List of {resourceName}s</Title>
     </View>
   );
   const renderFooter = () => {
@@ -50,3 +52,5 @@ const GeneralList = (props: Props) => {
 };
 
 export default GeneralList;
+
+const styles = StyleSheet.create({});

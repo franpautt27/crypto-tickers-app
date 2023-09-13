@@ -7,7 +7,9 @@ import { store } from "../redux/store";
 const AppLayout = () => {
   return (
     <Provider store={store}>
-      <Stack></Stack>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+      </Stack>
     </Provider>
   );
 };
