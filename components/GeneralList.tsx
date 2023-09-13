@@ -9,6 +9,7 @@ interface Props {
   ItemComponent: React.FC<any>;
   ItemLoadingComponent: React.FC;
   onEndReached?: () => void;
+  isAllLoaded?: boolean;
 }
 const GeneralList = (props: Props) => {
   const {
@@ -17,6 +18,7 @@ const GeneralList = (props: Props) => {
     resourceName,
     ItemLoadingComponent,
     onEndReached,
+    isAllLoaded = true,
   } = props;
 
   if (items.length === 0) return <ItemLoadingComponent />;
@@ -26,11 +28,13 @@ const GeneralList = (props: Props) => {
       <Text>List of {resourceName}s</Text>
     </View>
   );
-  const renderFooter = () => <ActivityIndicator />;
+  const renderFooter = () => {
+    if (isAllLoaded) return;
+    return <ActivityIndicator />;
+  };
 
   return (
     <BigList
-    
       renderFooter={renderFooter}
       headerHeight={50}
       footerHeight={50}

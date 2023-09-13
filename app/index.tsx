@@ -8,7 +8,7 @@ import TickersListLoading from "../components/Tickers/TickersListLoading";
 
 const HomeScreen = () => {
   const { tickers } = useAppSelector((state) => state.ticker);
-  const { loadTickers } = useTickersPaginated();
+  const { loadTickers, isAllLoaded } = useTickersPaginated();
 
   return (
     <GeneralList
@@ -17,6 +17,7 @@ const HomeScreen = () => {
       items={tickers}
       resourceName="ticker"
       onEndReached={loadTickers}
+      isAllLoaded={isAllLoaded}
     />
   
   );

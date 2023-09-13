@@ -18,6 +18,7 @@ const useTickersPaginated = () => {
 
   return {
     loadTickers,
+    isAllLoaded: start > total
   };
 };
 
