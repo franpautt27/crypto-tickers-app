@@ -1,29 +1,31 @@
-import React, { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Ticker } from "../interfaces/tickerInterfaces";
 import { fetchTickers } from "../services/tickers";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { setAllTickers } from "../redux/slices/tickerSlice";
 
 const useTickersSearch = () => {
-  const [tickersList, setTickersList] = useState<Ticker[]>([]);
+  const { allTickers, total } = useAppSelector((state) => state.ticker);
+  const dispatch = useAppDispatch();
   let shouldStopFetching: boolean = false;
 
   const loadRecursiveTickers = async (
     tickers: Ticker[],
     start: number,
-    end: number,
+    end: number
   ) => {
     let newTickersList: Ticker[] = [];
     if (start <= end) {
       const resp = await fetchTickers({ start });
-      
+      console.log(start);
       const nextStart = start + 100;
-      if(!shouldStopFetching){
+      if (!shouldStopFetching) {
         newTickersList = await loadRecursiveTickers(
-          (resp.data),
+          resp.data,
           nextStart,
-          resp.info.coins_num,
+          resp.info.coins_num
         );
       }
-      
     }
     return tickers.concat(newTickersList);
   };
@@ -31,17 +33,22 @@ const useTickersSearch = () => {
   useEffect(() => {
     async function getData() {
       const data = await loadRecursiveTickers([], 0, 0);
-      setTickersList(data)
+      console.log("DATA");
+      console.log(data.length);
+      if (data.length === total) dispatch(setAllTickers(data));
     }
-    getData();
+    if (allTickers.length === 0) {
+      // just run the function when necessary
+      getData();
+    }
 
     return () => {
-      shouldStopFetching = true;
+      shouldStopFetching = true;//cleaner function
     };
   }, []);
 
   return {
-    tickersList,
+    allTickers,
   };
 };
 

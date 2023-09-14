@@ -2,6 +2,10 @@ import { configureStore } from '@reduxjs/toolkit'
 import tickerReducer from './slices/tickerSlice'
 
 export const store = configureStore({
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    immutableCheck: { warnAfter: 1000 },
+    serializableCheck: { warnAfter: 1000 },
+  }),
   reducer: {
     ticker: tickerReducer
   },

@@ -7,9 +7,9 @@ import useTickersSearch from '../hooks/useTickersSearch'
 import TickersListLoading from '../components/Tickers/TickersListLoading'
 
 const SearchScreen = () => {
-  const {tickersList} = useTickersSearch()
+  const {allTickers} = useTickersSearch()
 
-  if(tickersList.length === 0) return <TickersListLoading />
+  if(allTickers.length === 0) return <TickersListLoading />
   return (
     <View style={[globalStyles.fullScreen, globalStyles.globalPaddingHorizontal]}>
       <SearchInput  />

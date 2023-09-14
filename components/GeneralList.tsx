@@ -1,18 +1,17 @@
-import { View, Text, ActivityIndicator, StyleSheet } from "react-native";
+import { ActivityIndicator, StyleSheet } from "react-native";
 import React from "react";
 import { GlobalItem } from "../interfaces/globalItemInterface";
 import BigList from "react-native-big-list";
-import { globalStyles } from "../constants/globalStyles";
-import Title from "./UI/Title";
+
 
 interface Props {
   items: GlobalItem[];
   resourceName: "ticker";
   ItemComponent: React.FC<any>;
+  headerComponent: React.FC;
   ItemLoadingComponent: React.FC;
   onEndReached?: () => void;
   isAllLoaded?: boolean;
-  headerTitle: string;
 }
 const GeneralList = (props: Props) => {
   const {
@@ -22,14 +21,12 @@ const GeneralList = (props: Props) => {
     ItemLoadingComponent,
     onEndReached,
     isAllLoaded = true,
-    headerTitle
+    headerComponent
   } = props;
 
   if (items.length === 0) return <ItemLoadingComponent />;
 
-  const headerComponent = () => (
-    null
-  );
+ 
   const renderFooter = () => {
     if (isAllLoaded) return;
     return <ActivityIndicator />;

@@ -6,6 +6,7 @@ import { fetchTickersThunk } from "../thunks/tickerThunks";
 export interface TickerState {
   info: Info | null;
   tickers: Ticker[];
+  allTickers: Ticker[];
   selectedTicker: Ticker | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   start: number;
@@ -14,6 +15,7 @@ export interface TickerState {
 
 const initialState: TickerState = {
   tickers: [],
+  allTickers: [],
   selectedTicker: null,
   status: "idle",
   info: null,
@@ -27,6 +29,9 @@ export const tickerSlice = createSlice({
   reducers: {
     setSelectedTicker: (state, action: PayloadAction<Ticker>) => {
       state.selectedTicker = action.payload;
+    },
+    setAllTickers: (state, action: PayloadAction<Ticker[]>) => {
+      state.allTickers = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +53,6 @@ export const tickerSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setSelectedTicker } = tickerSlice.actions;
+export const { setSelectedTicker, setAllTickers } = tickerSlice.actions;
 
 export default tickerSlice.reducer;
