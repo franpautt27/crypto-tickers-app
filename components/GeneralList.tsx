@@ -28,9 +28,7 @@ const GeneralList = (props: Props) => {
   if (items.length === 0) return <ItemLoadingComponent />;
 
   const headerComponent = () => (
-    <View style={globalStyles.globalMarginHorizontal}>
-      <Title>{headerTitle}</Title>
-    </View>
+    null
   );
   const renderFooter = () => {
     if (isAllLoaded) return;
