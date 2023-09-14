@@ -5,7 +5,6 @@ import { store } from "../redux/store";
 import Colors from "../constants/Colors";
 import { View } from "react-native";
 import { globalStyles } from "../constants/globalStyles";
-import { Ionicons } from "@expo/vector-icons";
 import TouchableIcon from "../components/UI/TouchableIcon";
 import useAppNavigation from "../hooks/useAppNavigation";
 

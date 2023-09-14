@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import Title from '../UI/Title'
 import { globalStyles } from '../../constants/globalStyles'

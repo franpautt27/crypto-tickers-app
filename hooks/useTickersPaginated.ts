@@ -1,5 +1,4 @@
-import { View, Text } from "react-native";
-import React, { useCallback, useEffect } from "react";
+import  {  useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchTickersThunk } from "../redux/thunks/tickerThunks";
 

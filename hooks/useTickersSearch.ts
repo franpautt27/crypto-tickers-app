@@ -17,7 +17,6 @@ const useTickersSearch = () => {
     let newTickersList: Ticker[] = [];
     if (start <= end) {
       const resp = await fetchTickers({ start });
-      console.log(start);
       const nextStart = start + 100;
       if (!shouldStopFetching) {
         newTickersList = await loadRecursiveTickers(
@@ -33,8 +32,6 @@ const useTickersSearch = () => {
   useEffect(() => {
     async function getData() {
       const data = await loadRecursiveTickers([], 0, 0);
-      console.log("DATA");
-      console.log(data.length);
       if (data.length === total) dispatch(setAllTickers(data));
     }
     if (allTickers.length === 0) {

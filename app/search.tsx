@@ -1,7 +1,6 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React, { useState, useEffect } from "react";
 import { globalStyles } from "../constants/globalStyles";
-import CustomText from "../components/UI/CustomText";
 import SearchInput from "../components/UI/SearchInput";
 import useTickersSearch from "../hooks/useTickersSearch";
 import TickersListLoading from "../components/Tickers/TickersListLoading";

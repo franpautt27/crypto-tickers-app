@@ -1,10 +1,11 @@
-import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
-import React, { useRef } from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
+import React from "react";
 import { globalStyles } from "../../constants/globalStyles";
 import Title from "./Title";
 import CustomText from "./CustomText";
 import RankText from "./RankText";
 import Colors from "../../constants/Colors";
+import { formatMoneyValue } from "../../utils/fomatMoneyValue";
 interface Props {
   title: string;
   usdExchange: string;
@@ -50,8 +51,12 @@ const Card = (props: Props) => {
         </View>
       </View>
       <View>
-        <Title style={styles.cardTitle}>${usdExchange} USD</Title>
-        <CustomText style={styles.cardText}>MCap: {marketCap}</CustomText>
+        <Title style={styles.cardTitle}>
+          ${formatMoneyValue(usdExchange)} USD
+        </Title>
+        <CustomText style={styles.cardText}>
+          MCap: {formatMoneyValue(marketCap)}
+        </CustomText>
       </View>
     </TouchableOpacity>
   );

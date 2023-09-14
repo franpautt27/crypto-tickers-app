@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, ViewStyle, StyleProp } from "react-native";
-import React, { useState } from "react";
-import Title from "./Title";
+import React from "react";
 import Colors from "../../constants/Colors";
 
 interface Props {
