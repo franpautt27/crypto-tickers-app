@@ -1,5 +1,8 @@
 const tintColorLight = '#2f95dc';
 const tintColorDark = '#fff';
+const dangerColor = "#ff4444"
+const successColor= "#00c851"
+const disabledColor="grey"
 
 export default {
   light: {
@@ -8,6 +11,9 @@ export default {
     tint: tintColorLight,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
+    success: successColor,
+    danger: dangerColor,
+    disabledColor
   },
   dark: {
     text: '#fff',
@@ -15,5 +21,8 @@ export default {
     tint: tintColorDark,
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
+    success: successColor,
+    danger: dangerColor,
+    disabledColor
   },
 };

@@ -37,7 +37,7 @@ const GeneralList = (props: Props) => {
       renderHeader={headerComponent}
       headerHeight={80}
       data={items}
-      itemHeight={65}
+      itemHeight={80}
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => <ItemComponent {...{ [resourceName]: item }} />}
       renderFooter={renderFooter}

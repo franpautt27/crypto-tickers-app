@@ -4,6 +4,7 @@ import { globalStyles } from "../../constants/globalStyles";
 import Title from "./Title";
 import CustomText from "./CustomText";
 import RankText from "./RankText";
+import Colors from "../../constants/Colors";
 interface Props {
   title: string;
   usdExchange: string;
@@ -23,8 +24,15 @@ const Card = (props: Props) => {
     title,
     usdExchange,
   } = props;
-  const indicatorColor = percentChange.includes("-") ? "red" : "green";
-  const percentageValue = percentChange.includes("-") ? percentChange : "+" + percentChange
+  const indicatorColor = percentChange.includes("-")
+    ? Colors.dark.danger
+    : Colors.dark.success;
+  const percentageValue = percentChange.includes("-")
+    ? percentChange
+    : "+" + percentChange;
+
+  const isTitleReallyLong = title.length >= 13;
+  const displayTitle = isTitleReallyLong ? symbol : title;
   return (
     <TouchableOpacity
       style={[globalStyles.directionRow, styles.container]}
@@ -32,15 +40,13 @@ const Card = (props: Props) => {
       onPress={onPress}
     >
       <View>
-        <Title style={styles.cardTitle}>{title}</Title>
+        <Title style={styles.cardTitle}>{displayTitle}</Title>
         {/* <Text style={[styles.cardText,globalStyles.text, {color: indicatorColor}]}> <RankText></RankText> BTC -1.36% </Text> */}
-        <View style={{ flexDirection: "row" }}>
-          <RankText style={{ marginRight: 7 }} rankValue={rank} />
-          
-          <CustomText style={[styles.cardText, { color: indicatorColor, }]}>
+        <View style={{}}>
+          <CustomText style={[styles.cardText, { color: indicatorColor }]}>
             {symbol} {percentageValue}%
           </CustomText>
-         
+          <RankText style={{ marginRight: 7 }} rankValue={rank} />
         </View>
       </View>
       <View>
@@ -62,6 +68,6 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 16,
-    alignSelf: "center" 
+    alignSelf: "center",
   },
 });

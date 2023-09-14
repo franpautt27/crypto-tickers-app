@@ -20,15 +20,25 @@ const SearchScreen = () => {
   const [tickersFiltered, setTickersFiltered] = useState<Ticker[]>([]);
 
   useEffect(() => {
-    if (searchTerm.length < 3) {
-      return setTickersFiltered([]);
+    
+
+    if(isNaN(Number(searchTerm))){
+      if (searchTerm.length < 3) {
+        return setTickersFiltered([]);
+      }
+      setTickersFiltered(
+        allTickers.filter((ticker) =>
+          ticker.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+      );
+    }else{
+      const searchTickerById = allTickers.find( (ticker) => ticker.id === searchTerm  )
+      setTickersFiltered(
+        searchTickerById ? [searchTickerById] : []
+      );
     }
 
-    setTickersFiltered(
-      allTickers.filter((ticker) =>
-        ticker.name.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    );
+    
   }, [searchTerm]);
 
   if (allTickers.length === 0) return <TickersListLoading />;
