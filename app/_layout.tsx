@@ -7,8 +7,10 @@ import { View } from "react-native";
 import { globalStyles } from "../constants/globalStyles";
 import { Ionicons } from "@expo/vector-icons";
 import TouchableIcon from "../components/UI/TouchableIcon";
+import useAppNavigation from "../hooks/useAppNavigation";
 
 const AppLayout = () => {
+  const {goToSearchScreen} = useAppNavigation()
   return (
     <Provider store={store}>
       <View style={globalStyles.fullScreen}>
@@ -25,12 +27,13 @@ const AppLayout = () => {
               headerRight: () => (
                 <TouchableIcon
                 icon="search"
-                onPress={()=>null}
+                onPress={goToSearchScreen}
 
                 />
               ),
             }}
           />
+          <Stack.Screen name="search" options={{headerTitle: "Filter by search"}} />
         </Stack>
       </View>
     </Provider>

@@ -1,3 +1,4 @@
+import { CancelToken } from "axios";
 import { TickerParamsType } from "../interfaces/paramsInterface";
 import { FetchedTickers } from "../interfaces/tickerInterfaces";
 import api from "./api";
@@ -5,7 +6,7 @@ import api from "./api";
 export async function fetchTickers({
   limit = 100,
   start = 0,
-}: TickerParamsType) {
+}: TickerParamsType ) {
   const fetchedTickers = await api.get<FetchedTickers>("/tickers/", {
     params: { start, limit },
   });

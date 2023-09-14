@@ -3,9 +3,10 @@ import React from "react";
 import { useAppSelector } from "../../redux/hooks";
 import { Stack } from "expo-router";
 import { globalStyles } from "../../constants/globalStyles";
-import Colors from "../../constants/Colors";
+import { LogBox } from 'react-native';
 
 const TickerDetails = () => {
+  LogBox.ignoreLogs(['The `redirect` prop on <Screen /> is deprecated']);
   const { selectedTicker } = useAppSelector((state) => state.ticker);
   return (
     <View style={[globalStyles.fullScreen, globalStyles.centered]}>

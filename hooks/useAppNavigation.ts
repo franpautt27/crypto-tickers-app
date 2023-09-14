@@ -1,5 +1,3 @@
-import { View, Text } from 'react-native'
-import React from 'react'
 import { useRouter } from 'expo-router'
 
 const useAppNavigation = () => {
@@ -9,8 +7,13 @@ const useAppNavigation = () => {
     push({ pathname: '/tickers/[id]', params: { id } })
   }
 
+  const goToSearchScreen = () => {
+    push("/search")
+  }
+
   return {
-    goToTickerDetails
+    goToTickerDetails,
+    goToSearchScreen
   }
 }
 

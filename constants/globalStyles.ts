@@ -16,6 +16,9 @@ export const globalStyles = StyleSheet.create({
   globalMarginHorizontal: {
     marginHorizontal: 40,
   },
+  globalPaddingHorizontal: {
+    paddingHorizontal: 20,
+  },
   globalMarginVertical: { marginVertical: 40 },
   directionRow: {
     flexDirection: "row",
