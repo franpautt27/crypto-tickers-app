@@ -1,9 +1,21 @@
 import { StyleSheet, View, TextInput } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "../../constants/Colors";
+import useDebouncedValue from "../../hooks/useDebouncedValue";
 
-const SearchInput = () => {
+interface Props {
+  onDebounce: (value: string) => void;
+}
+
+const SearchInput = (props: Props) => {
+  const { onDebounce } = props;
+  const [textValue, setTextValue] = useState("");
+  const debouncedValue = useDebouncedValue(textValue);
+  useEffect(() => {
+    onDebounce(debouncedValue);
+  }, [debouncedValue]);
+
   return (
     <View style={styles.textBackground}>
       <TextInput
@@ -11,6 +23,8 @@ const SearchInput = () => {
         autoCapitalize="none"
         autoCorrect={false}
         style={styles.textInput}
+        value={textValue}
+        onChangeText={setTextValue}
       />
 
       <Ionicons name="search-outline" size={25} color="grey" />

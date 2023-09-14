@@ -35,7 +35,7 @@ const GeneralList = (props: Props) => {
   return (
     <BigList
       renderHeader={headerComponent}
-      headerHeight={50}
+      headerHeight={80}
       data={items}
       itemHeight={65}
       keyExtractor={(item) => item.id}
