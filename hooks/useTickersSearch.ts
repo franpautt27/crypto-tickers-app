@@ -8,7 +8,9 @@ const useTickersSearch = () => {
   const { allTickers, total } = useAppSelector((state) => state.ticker);
   const dispatch = useAppDispatch();
   let shouldStopFetching: boolean = false;
-
+  //! This function is very slow, it loads recursively all the data from the API, I only use it because I need to filter all the tickers regarding their name or id
+  //! and I can't do that with the paginated API (I can't even change the limit value to simplify the work).
+  //! I recognize this is a bad practice, the API should be the one that provides all that filtering functionality, however I can't modify it
   const loadRecursiveTickers = async (
     tickers: Ticker[],
     start: number,
@@ -40,7 +42,7 @@ const useTickersSearch = () => {
     }
 
     return () => {
-      shouldStopFetching = true;//cleaner function
+      shouldStopFetching = true; //cleaner function
     };
   }, []);
 

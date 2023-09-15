@@ -10,6 +10,7 @@ import GeneralList from "../components/GeneralList";
 import TickersListItem from "../components/Tickers/TickersListItem";
 import TickerSearchInitialRender from "../components/Tickers/TickerSearchInitialRender";
 import TickerSearchNotFound from "../components/Tickers/TickerSearchNotFound";
+import { filterTickersByNameOrId } from "../utils/filterTickers";
 
 const SearchScreen = () => {
   const { allTickers } = useTickersSearch();
@@ -19,25 +20,8 @@ const SearchScreen = () => {
   const [tickersFiltered, setTickersFiltered] = useState<Ticker[]>([]);
 
   useEffect(() => {
-    
-
-    if(isNaN(Number(searchTerm))){
-      if (searchTerm.length < 3) {
-        return setTickersFiltered([]);
-      }
-      setTickersFiltered(
-        allTickers.filter((ticker) =>
-          ticker.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      );
-    }else{
-      const searchTickerById = allTickers.find( (ticker) => ticker.id === searchTerm  )
-      setTickersFiltered(
-        searchTickerById ? [searchTickerById] : []
-      );
-    }
-
-    
+    const filteredArray = filterTickersByNameOrId(searchTerm, allTickers);
+    setTickersFiltered(filteredArray);
   }, [searchTerm]);
 
   if (allTickers.length === 0) return <TickersListLoading />;
