@@ -1,4 +1,4 @@
-const tintColorLight = '#2f95dc';
+const tintColorLight = '#122562';
 const tintColorDark = '#fff';
 const dangerColor = "#ff4444"
 const successColor= "#00c851"

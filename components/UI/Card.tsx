@@ -42,7 +42,6 @@ const Card = (props: Props) => {
     >
       <View>
         <Title style={styles.cardTitle}>{displayTitle}</Title>
-        {/* <Text style={[styles.cardText,globalStyles.text, {color: indicatorColor}]}> <RankText></RankText> BTC -1.36% </Text> */}
         <View style={{}}>
           <CustomText style={[styles.cardText, { color: indicatorColor }]}>
             {symbol} {percentageValue}%
