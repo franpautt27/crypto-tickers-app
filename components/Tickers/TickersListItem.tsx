@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import { Ticker } from "../../interfaces/tickerInterfaces";
 import useAppNavigation from "../../hooks/useAppNavigation";
 import { useAppDispatch } from "../../redux/hooks";
@@ -32,4 +32,4 @@ const TickersListItem = (props: Props) => {
   );
 };
 
-export default TickersListItem;
+export default memo(TickersListItem)
