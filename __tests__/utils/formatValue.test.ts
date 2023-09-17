@@ -1,4 +1,4 @@
-import { formatMoneyValue } from "../../utils/fomatMoneyValue"
+import { formatValue } from "../../utils/fomatValue"
 
 it("should return a formatted k-number string for values >= 1000",()=>{
     //Arrange
@@ -6,7 +6,7 @@ it("should return a formatted k-number string for values >= 1000",()=>{
     const expectedOutput = "26.57k"
 
     //Act
-    const receivedOutput = formatMoneyValue(input)
+    const receivedOutput = formatValue(input)
 
     //Assert
     expect(receivedOutput).toBe(expectedOutput)
@@ -18,7 +18,7 @@ it("should return a formatted single string for values < 1000",()=>{
     const expectedOutput = "0.49"
 
     //Act
-    const receivedOutput = formatMoneyValue(input)
+    const receivedOutput = formatValue(input)
 
     //Assert
     expect(receivedOutput).toBe(expectedOutput)
@@ -30,7 +30,7 @@ it("should return a formatted M-number string for values >= 1000000",()=>{
     const expectedOutput = "7.43M"
 
     //Act
-    const receivedOutput = formatMoneyValue(input)
+    const receivedOutput = formatValue(input)
 
     //Assert
     expect(receivedOutput).toBe(expectedOutput)

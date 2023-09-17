@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "__tests__/utils/formatMoneyValue.test.ts"  ]
+, "__tests__/utils/formatValue.test.ts"  ]
 }

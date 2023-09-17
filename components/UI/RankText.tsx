@@ -1,28 +1,22 @@
 import { StyleSheet, Text, View, ViewStyle, StyleProp } from "react-native";
 import React from "react";
 import Colors from "../../constants/Colors";
+import { returnMedalType } from "../../utils/returnMedalType";
 
 interface Props {
   rankValue: number;
-  style: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
 }
 
 const RankText = (props: Props) => {
   const { rankValue, style } = props;
-  let medal = "🥇";
-  if (rankValue < 10) {
-    medal = "🥇";
-  } else if (rankValue < 100) {
-    medal = "🥈";
-  } else {
-    medal = "🥉";
-  }
+  const {medal, color} = returnMedalType(rankValue)
   return (
     <View
       style={[styles.container, style]}
     >
       <Text
-        style={styles.text}
+        style={[styles.text, {color}]}
       >
         {" "}
         {medal + " " + rankValue}

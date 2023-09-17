@@ -6,12 +6,35 @@ import { globalStyles } from "../../constants/globalStyles";
 import { LogBox } from "react-native";
 import Title from "../../components/UI/Title";
 import BigCard from "../../components/UI/BigCard";
-import { formatMoneyValue } from "../../utils/fomatMoneyValue";
+import { formatValue } from "../../utils/fomatValue";
 import CustomText from "../../components/UI/CustomText";
+import TickerInfoRow from "../../components/Tickers/TickerInfoRow";
+import Colors from "../../constants/Colors";
+import { returnMedalType } from "../../utils/returnMedalType";
 
 const TickerDetails = () => {
   LogBox.ignoreLogs(["The `redirect` prop on <Screen /> is deprecated"]);
   const { selectedTicker } = useAppSelector((state) => state.ticker);
+  const {
+    csupply,
+    id,
+    market_cap_usd,
+    msupply,
+    name,
+    nameid,
+    percent_change_1h,
+    percent_change_24h,
+    percent_change_7d,
+    price_btc,
+    price_usd,
+    rank,
+    symbol,
+    tsupply,
+    volume24,
+    volume24a,
+  } = selectedTicker!;
+  let rankColor: string;
+  const {color: medalColor, medal} = returnMedalType(rank)
   return (
     <View
       style={[
@@ -26,21 +49,63 @@ const TickerDetails = () => {
       />
       <BigCard
         header="Exchange in USD:"
-        value={"$ " + formatMoneyValue(selectedTicker!.price_usd) + " USD"}
+        value={"$ " + formatValue(selectedTicker!.price_usd) + " USD"}
       />
-      <View style={{width: "100%", marginTop: 20}}>
+      <View style={{ width: "100%", marginTop: 20 }}>
         <Title>Information:</Title>
-        <View style={globalStyles.directionRow}>
-          <CustomText>% Change 1 hour:</CustomText>
-          <CustomText>{selectedTicker!.percent_change_1h + "%"}</CustomText>
+        <TickerInfoRow
+       infoColor={medalColor}
+          info={medal + " "+ rank} 
+          label="Rank"
+        />
+        <TickerInfoRow
+          infoColor={
+            Number(percent_change_1h) > 0
+              ? Colors.dark.success
+              : Colors.dark.danger
+          }
+          info={percent_change_1h + "%"}
+          label="% Change last hour"
+        />
+        <TickerInfoRow
+          infoColor={
+            Number(percent_change_24h) > 0
+              ? Colors.dark.success
+              : Colors.dark.danger
+          }
+          info={percent_change_24h + "%"}
+          label="% Change last day"
+        />
+        <TickerInfoRow
+          infoColor={
+            Number(percent_change_7d) > 0
+              ? Colors.dark.success
+              : Colors.dark.danger
+          }
+          info={percent_change_7d + "%"}
+          label="% Change last week"
+        />
+        <TickerInfoRow
+          info={"$ " + formatValue(market_cap_usd)}
+          label="Market capitalization (USD)"
+        />
+        <TickerInfoRow
+          info={formatValue(volume24.toString())} 
+          label="24 hours Volume"
+        />
+        <TickerInfoRow
+          info={formatValue(csupply)} 
+          label="Circulating supply"
+        />
+        <TickerInfoRow
+          info={formatValue(msupply ?? "N/A")} 
+          label="Maximum supply"
+        />
+        <TickerInfoRow
+          info={formatValue(tsupply ?? "N/A")} 
+          label="Total supply"
+        />
       </View>
-      <View style={globalStyles.directionRow}>
-          <CustomText>% Change 1 hour:</CustomText>
-          <CustomText>{selectedTicker!.percent_change_1h + "%"}</CustomText>
-      </View>
-      </View>
-
-        
     </View>
   );
 };

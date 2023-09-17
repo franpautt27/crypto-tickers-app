@@ -5,7 +5,7 @@ import Title from "./Title";
 import CustomText from "./CustomText";
 import RankText from "./RankText";
 import Colors from "../../constants/Colors";
-import { formatMoneyValue } from "../../utils/fomatMoneyValue";
+import { formatValue } from "../../utils/fomatValue";
 interface Props {
   title: string;
   usdExchange: string;
@@ -51,10 +51,10 @@ const Card = (props: Props) => {
       </View>
       <View>
         <Title style={styles.cardTitle}>
-          ${formatMoneyValue(usdExchange)} USD
+          ${formatValue(usdExchange)} USD
         </Title>
         <CustomText style={styles.cardText}>
-          MCap: {formatMoneyValue(marketCap)}
+          MCap: {formatValue(marketCap)}
         </CustomText>
       </View>
     </TouchableOpacity>
