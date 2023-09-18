@@ -19,3 +19,16 @@ When using the filter functionality by name, at first it loads *all* the coin da
 ![FilterCryptoDelay](https://github.com/franpautt27/crypto-tickers-app/assets/58583172/7df87382-4e4b-466a-901c-66f2363f2520)
 
 However, this long loading only occurs at the beginning (when you first press the search bar icon) since once all data is fetched, is saved in a redux Global State, so there is no reason to upload all that heavy information again.
+
+
+## How to Run
+
+To install all dependencies before running the project:
+```
+  yarn install
+```
+
+To run the project:
+```
+  npx expo
+```
