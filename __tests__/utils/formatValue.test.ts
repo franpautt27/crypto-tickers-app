@@ -35,3 +35,15 @@ it("should return a formatted M-number string for values >= 1000000",()=>{
     //Assert
     expect(receivedOutput).toBe(expectedOutput)
 })
+
+it("should return N/A for non-numeric values",()=>{
+    //Arrange
+    const input = "Hello"
+    const expectedOutput = "N/A"
+
+    //Act
+    const receivedOutput = formatValue(input)
+
+    //Assert
+    expect(receivedOutput).toBe(expectedOutput)
+})

@@ -17,6 +17,7 @@ const TickerDetails = () => {
   const { selectedTicker } = useAppSelector((state) => state.ticker);
   const {
     csupply,
+    id,
     market_cap_usd,
     msupply,
     percent_change_1h,
@@ -55,7 +56,7 @@ const TickerDetails = () => {
           infoColor={
             Number(percent_change_1h) > 0 ? Colors.success : Colors.danger
           }
-          info={percent_change_1h + "%"}
+          info={id}
           label="% Change last hour"
         />
         <TickerInfoRow
