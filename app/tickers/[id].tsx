@@ -17,24 +17,17 @@ const TickerDetails = () => {
   const { selectedTicker } = useAppSelector((state) => state.ticker);
   const {
     csupply,
-    id,
     market_cap_usd,
     msupply,
-    name,
-    nameid,
     percent_change_1h,
     percent_change_24h,
     percent_change_7d,
-    price_btc,
-    price_usd,
     rank,
-    symbol,
     tsupply,
     volume24,
-    volume24a,
   } = selectedTicker!;
   let rankColor: string;
-  const {color: medalColor, medal} = returnMedalType(rank)
+  const { color: medalColor, medal } = returnMedalType(rank);
   return (
     <View
       style={[
@@ -54,33 +47,27 @@ const TickerDetails = () => {
       <View style={{ width: "100%", marginTop: 20 }}>
         <Title>Information:</Title>
         <TickerInfoRow
-       infoColor={medalColor}
-          info={medal + " "+ rank} 
+          infoColor={medalColor}
+          info={medal + " " + rank}
           label="Rank"
         />
         <TickerInfoRow
           infoColor={
-            Number(percent_change_1h) > 0
-              ? Colors.success
-              : Colors.danger
+            Number(percent_change_1h) > 0 ? Colors.success : Colors.danger
           }
           info={percent_change_1h + "%"}
           label="% Change last hour"
         />
         <TickerInfoRow
           infoColor={
-            Number(percent_change_24h) > 0
-              ? Colors.success
-              : Colors.danger
+            Number(percent_change_24h) > 0 ? Colors.success : Colors.danger
           }
           info={percent_change_24h + "%"}
           label="% Change last day"
         />
         <TickerInfoRow
           infoColor={
-            Number(percent_change_7d) > 0
-              ? Colors.success
-              : Colors.danger
+            Number(percent_change_7d) > 0 ? Colors.success : Colors.danger
           }
           info={percent_change_7d + "%"}
           label="% Change last week"
@@ -90,19 +77,16 @@ const TickerDetails = () => {
           label="Market capitalization (USD)"
         />
         <TickerInfoRow
-          info={formatValue(volume24.toString())} 
+          info={formatValue(volume24.toString())}
           label="24 hours Volume"
         />
+        <TickerInfoRow info={formatValue(csupply)} label="Circulating supply" />
         <TickerInfoRow
-          info={formatValue(csupply)} 
-          label="Circulating supply"
-        />
-        <TickerInfoRow
-          info={formatValue(msupply ?? "N/A")} 
+          info={formatValue(msupply ?? "N/A")}
           label="Maximum supply"
         />
         <TickerInfoRow
-          info={formatValue(tsupply ?? "N/A")} 
+          info={formatValue(tsupply ?? "N/A")}
           label="Total supply"
         />
       </View>
