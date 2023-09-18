@@ -8,7 +8,7 @@ If you want to stay tuned about Cryptocurrency and Forex markets, this app is fo
 The App loads lazily the tickers data from the paginated API, in a way that only requests the next 100 tickers when are needed to display (reaching at the bottom of the list)
 
 ## Filter by Name or Id feature
-If you want to just go to a specific coin, you can filter all the results by the coin name or Id! The search featre implements a debounced text value that only reacts when the user stops typing for 500 ms. In that way, the filtered list isn't over-rendered every time the user types a new character in their keyboard.
+If you want to just go to a specific coin, you can filter all the results by the coin name or Id! The search feature implements a debounced text value that only reacts when the user stops typing for 500 ms. In that way, the filtered list isn't over-rendered every time the user types a new character in their keyboard.
 
 ![FilterCryptoApp](https://github.com/franpautt27/crypto-tickers-app/assets/58583172/da52fcfb-c9d0-4bb5-a765-38aeb898cd37)
 
