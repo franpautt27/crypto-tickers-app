@@ -4,7 +4,7 @@ import api from "../../services/api";
 
 describe("fetchTickers()", () => {
   it("should fetch successfully the tickers data from API", async () => {
-    const expectedResponse = {
+    const expectedResponseFromApiGet = {
       data: {
         data: TICKERS_TESTING_DATA,
         info: {
@@ -14,10 +14,10 @@ describe("fetchTickers()", () => {
       },
     };
     // to mock the function
-    jest.spyOn(api, "get").mockResolvedValue(expectedResponse);
+    jest.spyOn(api, "get").mockResolvedValue(expectedResponseFromApiGet);
 
     const result = await fetchTickers({});
 
-    expect(result).toEqual(expectedResponse.data);
+    expect(result).toEqual(expectedResponseFromApiGet.data);
   });
 });
