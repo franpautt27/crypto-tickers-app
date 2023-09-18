@@ -1,4 +1,3 @@
-import { CancelToken } from "axios";
 import { TickerParamsType } from "../interfaces/paramsInterface";
 import { FetchedTickers } from "../interfaces/tickerInterfaces";
 import api from "./api";

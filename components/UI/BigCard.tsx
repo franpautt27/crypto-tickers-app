@@ -1,8 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React from 'react'
 import Colors from '../../constants/Colors'
 import Title from './Title';
-import CustomText from './CustomText';
 import { globalStyles } from '../../constants/globalStyles';
 
 interface Props {

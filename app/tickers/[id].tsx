@@ -7,7 +7,6 @@ import { LogBox } from "react-native";
 import Title from "../../components/UI/Title";
 import BigCard from "../../components/UI/BigCard";
 import { formatValue } from "../../utils/fomatValue";
-import CustomText from "../../components/UI/CustomText";
 import TickerInfoRow from "../../components/Tickers/TickerInfoRow";
 import Colors from "../../constants/Colors";
 import { returnMedalType } from "../../utils/returnMedalType";
