@@ -56,7 +56,7 @@ const TickerDetails = () => {
           infoColor={
             Number(percent_change_1h) > 0 ? Colors.success : Colors.danger
           }
-          info={id}
+          info={percent_change_1h + "%"}
           label="% Change last hour"
         />
         <TickerInfoRow
