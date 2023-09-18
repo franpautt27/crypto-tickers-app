@@ -61,8 +61,8 @@ const TickerDetails = () => {
         <TickerInfoRow
           infoColor={
             Number(percent_change_1h) > 0
-              ? Colors.dark.success
-              : Colors.dark.danger
+              ? Colors.success
+              : Colors.danger
           }
           info={percent_change_1h + "%"}
           label="% Change last hour"
@@ -70,8 +70,8 @@ const TickerDetails = () => {
         <TickerInfoRow
           infoColor={
             Number(percent_change_24h) > 0
-              ? Colors.dark.success
-              : Colors.dark.danger
+              ? Colors.success
+              : Colors.danger
           }
           info={percent_change_24h + "%"}
           label="% Change last day"
@@ -79,8 +79,8 @@ const TickerDetails = () => {
         <TickerInfoRow
           infoColor={
             Number(percent_change_7d) > 0
-              ? Colors.dark.success
-              : Colors.dark.danger
+              ? Colors.success
+              : Colors.danger
           }
           info={percent_change_7d + "%"}
           label="% Change last week"

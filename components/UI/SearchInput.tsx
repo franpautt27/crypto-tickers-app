@@ -27,7 +27,7 @@ const SearchInput = (props: Props) => {
         onChangeText={setTextValue}
       />
 
-      <Ionicons name="search-outline" size={25} color={Colors.dark.disabledColor} />
+      <Ionicons name="search-outline" size={25} color={Colors.disabledColor} />
     </View>
   );
 };

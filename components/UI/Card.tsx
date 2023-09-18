@@ -26,8 +26,8 @@ const Card = (props: Props) => {
     usdExchange,
   } = props;
   const indicatorColor = percentChange.includes("-")
-    ? Colors.dark.danger
-    : Colors.dark.success;
+    ? Colors.danger
+    : Colors.success;
   const percentageValue = percentChange.includes("-")
     ? percentChange
     : "+" + percentChange;
